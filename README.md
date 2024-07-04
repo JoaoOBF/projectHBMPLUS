@@ -22,8 +22,8 @@ npm start
 Endpoints da API
 url: https://projecthbmplus.onrender.com
 
-GET /api/v1/measurements: Retorna as medições recentes de batimentos cardíacos.
-GET /api/v1/irregularities: Retorna as irregularidades detectadas nos batimentos cardíacos.
+ - GET /api/v1/measurements: Retorna as medições recentes de batimentos cardíacos.
+ - GET /api/v1/irregularities: Retorna as irregularidades detectadas nos batimentos cardíacos.
 
 Frontend
 O frontend da aplicação está disponível na raiz do servidor. Abra http://localhost:3000 no seu navegador para acessar.
