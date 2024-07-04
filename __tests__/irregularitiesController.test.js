@@ -1,7 +1,6 @@
 const { fetchIrregularities } = require('../controllers/irregularitiesController');
 const db = require('../db/irregularitiesDB');
 
-// Mocking the database module
 jest.mock('../db/irregularitiesDB', () => ({
     getAllIrregularities: jest.fn(),
 }));

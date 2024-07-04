@@ -2,7 +2,6 @@ const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const dbFile = path.join(__dirname, 'database.sqlite');
 
-// Função para inicializar o banco de dados
 const initializeDatabase = () => {
   return new Promise((resolve, reject) => {
     const db = new sqlite3.Database(dbFile, (err) => {
@@ -12,7 +11,6 @@ const initializeDatabase = () => {
       } else {
         console.log('Conectado ao banco de dados SQLite.');
 
-        // Criar tabela de medições
         db.run(`CREATE TABLE IF NOT EXISTS measurements (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           heartRate REAL NOT NULL,
@@ -26,7 +24,6 @@ const initializeDatabase = () => {
           }
         });
 
-        // Criar tabela de irregularidades
         db.run(`CREATE TABLE IF NOT EXISTS irregularities (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           start TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

@@ -1,7 +1,6 @@
 const { fetchMeasurements } = require('../controllers/measurementsController');
 const db = require('../db/measurementsDB');
 
-// Mocking the database module
 jest.mock('../db/measurementsDB', () => ({
     getMeasurements: jest.fn(),
 }));
