@@ -22,7 +22,6 @@ const checkAnomalies = (measurements) => {
             anomalies++;
         }
     }
-    console.log(anomalies)
     return anomalies >= 5;
 }
 
