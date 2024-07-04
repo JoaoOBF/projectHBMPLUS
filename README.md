@@ -26,4 +26,4 @@ url: https://projecthbmplus.onrender.com
  - GET /api/v1/irregularities: Retorna as irregularidades detectadas nos batimentos cardíacos.
 
 Frontend
-O frontend da aplicação está disponível na raiz do servidor. Abra http://localhost:3000 no seu navegador para acessar.
+O frontend da aplicação está disponível na raiz do servidor. Abra(https://projecthbmplus.onrender.com ou localmente via http://localhost:3000) no seu navegador para acessar.
