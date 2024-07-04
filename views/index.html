@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bem-vindo ao simulador HBM+ (Heart-beat monitor - Plus)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    .button-container {
+      margin: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+    }
+    #heartbeat {
+      font-size: 24px;
+      margin-top: 20px;
+      color: #007BFF;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bem-vindo ao simulador HBM+ (Heart-beat monitor - Plus)</h1>
+  <div class="button-container">
+    <button id="normal">Simular sinais normais</button>
+    <button id="abnormal">Simular sinais anormais</button>
+  </div>
+  <div id="heartbeat">Heart Rate: -- bpm</div>
+  <div id="alert"></div>
+
+  <script>
+    let socket;
+    const heartbeatDiv = document.getElementById('heartbeat');
+    const alertDiv = document.getElementById('alert');
+
+    document.getElementById('normal').onclick = () => {
+      startSimulation('normal');
+    };
+
+    document.getElementById('abnormal').onclick = () => {
+      startSimulation('abnormal');
+    };
+
+    function startSimulation(type) {
+      if (socket) {
+        socket.close();
+      }
+      socket = new WebSocket(`ws://localhost:3000/simulate?type=${type}`);
+
+      socket.onopen = () => {
+        console.log('Connected to WebSocket server');
+      };
+
+      socket.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        if (data.heartRate !== undefined) {
+          heartbeatDiv.innerText = `Heart Rate: ${data.heartRate} bpm`;
+          alertDiv.innerText = '';
+        }
+        if (data.alert !== undefined) {
+          alertDiv.innerText = `Alert: ${data.alert}`;
+        }
+      };
+
+      socket.onclose = () => {
+        console.log('Disconnected from WebSocket server');
+      };
+
+      // Stop simulation after 2 minutes
+      setTimeout(() => {
+        socket.close();
+        heartbeatDiv.innerText = 'Simulation ended';
+        alertDiv.innerText = '';
+      }, 4 * 60 * 1000);
+    }
+  </script>
+</body>
+</html>
