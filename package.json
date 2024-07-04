@@ -2,9 +2,10 @@
   "name": "koa-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles",
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +15,7 @@
     "dayjs": "^1.11.11",
     "koa-body": "^6.0.1",
     "koa-logger": "^3.2.1",
+    "koa-mount": "^4.0.0",
     "koa-router": "^12.0.1",
     "koa-static": "^5.0.0",
     "koa-views": "^8.1.0",
