@@ -20,6 +20,8 @@ Para iniciar a aplicação, utilize o seguinte comando:
 npm start
 
 Endpoints da API
+url: https://projecthbmplus.onrender.com
+
 GET /api/v1/measurements: Retorna as medições recentes de batimentos cardíacos.
 GET /api/v1/irregularities: Retorna as irregularidades detectadas nos batimentos cardíacos.
 
